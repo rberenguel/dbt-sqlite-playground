@@ -1,4 +1,4 @@
-# Silly dbt playground
+# Silly dbt-sqlite playground
 
 Last week I was taking the free [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals) offered by `dbt labs`, and the only options to take it "easily" are using cloud data warehouses, or starting a Postgres/MySQL/some-db container or application locally. I didn't want the hassle, or more like, I wanted to configure the `dbt` parts in the easiest way possible.
 
