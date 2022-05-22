@@ -1,0 +1,1 @@
+select order_id, cost from {{ ref('stg_cost_per_order_line') }} where cost <= 0

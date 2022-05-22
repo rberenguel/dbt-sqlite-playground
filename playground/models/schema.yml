@@ -1,0 +1,35 @@
+
+version: 2
+
+models:
+  - name: stg_cost_per_order_line
+    description: "Cost per order line in orders table according to price in products table"
+    columns:
+      - name: order_id
+        description: "Order id key"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Product id for this order row"
+        tests:
+          - not_null
+      - name: cost
+        description: "Total cost of this row"
+        tests:
+          - not_null
+
+  - name: stg_cost_per_order_line
+    description: "Cost per order line in orders table according to price in products table"
+    columns:
+      - name: order_id
+        description: "Order id key"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Product id for this order row"
+        tests:
+          - not_null
+      - name: cost
+        description: "Total cost of this row"
+        tests:
+          - not_null

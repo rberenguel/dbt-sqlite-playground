@@ -1,0 +1,7 @@
+.DS_Store
+playground/target/
+playground.sqlite3
+.vscode/
+playground/logs/
+logs/
+playground/.user.yml

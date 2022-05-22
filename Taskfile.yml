@@ -1,0 +1,30 @@
+version: '3'
+tasks:
+    sql-lint:
+      cmds:
+        - poetry run sqlfluff lint playground/models/ --dialect sqlite
+    sql-fix:
+      cmds:
+        - poetry run sqlfluff fix playground/models/ --dialect sqlite
+    populate:
+      cmds:
+        - python populate.py
+    dbt-run:
+      deps: [populate]
+      dir: playground
+      cmds:
+        - poetry run dbt run --profiles-dir . 
+    dbt-docs:
+      deps: [dbt-run]
+      dir: playground
+      cmds:
+        - poetry run dbt docs generate --profiles-dir .
+        - poetry run dbt docs serve --profiles-dir . 
+    dbt-test:
+      dir: playground
+      cmds:
+        - poetry run dbt test --profiles-dir .
+    check-total:
+      deps: [dbt-run]
+      cmds:
+        - sqlite3 playground.sqlite3 "select * from fct_paid_income;" ".exit"

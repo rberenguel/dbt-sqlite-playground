@@ -1,0 +1,58 @@
+version: 2
+
+sources:
+  - name: main
+    tables:
+      - name: products
+        description: >
+          Product information for a company
+        columns:
+          - name: id
+            description: Identifier for a product
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Human friendly product name
+            tests:
+              - not_null
+      - name: orders
+        description: >
+          Orders for a company, with no date because YOLO. Contains a row per order line item
+        columns:
+          - name: id
+            description: Identifier for an order
+            tests:
+              - not_null
+          - name: product_id
+            description: Product for this line item
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('products')
+                  field: id
+          - name: qty
+            description: Quantity of this product in this order
+            tests:
+              - not_null
+      - name: invoices
+        description: >
+          Invoices for orders
+        columns:
+          - name: id
+            description: Identifier for an invoice
+            tests:
+              - not_null
+          - name: order_id
+            description: Identifier of the corresponding order
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('orders')
+                  field: id
+          - name: status
+            description: Status of order
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['PAID', 'PENDING']

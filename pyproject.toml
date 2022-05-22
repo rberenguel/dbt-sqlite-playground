@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "dbt-playground"
+version = "0.1.0"
+description = ""
+authors = ["Ruben Berenguel <ruben+poetry@mostlymaths.net>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9.9"
+dbt-sqlite = "^1.1.0"
+colorlog = "^6.6.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+pylint = "^2.13.9"
+isort = "^5.10.1"
+sqlfluff = "^0.13.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.sqlfluff.core]
+templater = "jinja"
+
+[tool.sqlfluff.indentation]
+indented_joins = false
+indented_using_on = true
+template_blocks_indent = false
+
+[tool.sqlfluff.templater]
+unwrap_wrapped_queries = true
+
+[tool.sqlfluff.templater.jinja]
+apply_dbt_builtins = true
